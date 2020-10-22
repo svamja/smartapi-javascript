@@ -24,8 +24,6 @@ smart_api.generateSession("CLIENT_CODE", "PASSWORD")
         //     "duration": "DAY"
         //     })
 
-        // return smart_api.refreshOrderStatus();
-
         // return smart_api.modifyOrder({
         //     "orderid": "201015000000284",
         //     "tradingsymbol": "INFY-EQ",
@@ -42,6 +40,8 @@ smart_api.generateSession("CLIENT_CODE", "PASSWORD")
         // return smart_api.cancelOrder("201015000000281");
 
         // V2 API'S
+        // return smart_api.getOrderBook(); // WORKING
+
         // return smart_api.getTradeBook();    //{ status: false,
         //   message: 'No Trade Found',
         //   errorcode: 'AB1008',

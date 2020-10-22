@@ -9,7 +9,8 @@ module.exports.API = {
     "get_profile": "/login-service/rest/secure/angelbroking/user/v1/getProfile",
 
     "order_place": "/order-service/rest/secure/angelbroking/order/v1/placeOrder",
-    "order_status": "/order-service/rest/secure/angelbroking/order/v1/orderStatus",
+    // "order_status": "/order-service/rest/secure/angelbroking/order/v1/orderStatus",
+    "order_get_book": "/order-service/rest/secure/angelbroking/order/v1/getOrderBook",
     "order_modify": "/order-service/rest/secure/angelbroking/order/v1/modifyOrder",
     "order_cancel": "/order-service/rest/secure/angelbroking/order/v1/cancelOrder",
 
