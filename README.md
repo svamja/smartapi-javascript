@@ -10,7 +10,7 @@ npm i smartapi-javascript
 let { SmartAPI } = require("smartapi-javascript");
 
 let smart_api = new SmartAPI({
-    api_key: "my test key",
+    api_key: "YOUR_API_KEY",
     // OPTIONAL
     // access_token: "YOUR_ACCESS_TOKEN",
     // refresh_token: "YOUR_REFRESH_TOKEN"
