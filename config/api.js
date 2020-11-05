@@ -1,6 +1,6 @@
 module.exports.API = {
     "root": "https://openapisuat.angelbroking.com",
-    "login": "https://kite.trade/connect/login",
+    "login": "http://52.66.228.239:3000/login",
     "debug": false,
     "timeout": 7000,
 
