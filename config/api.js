@@ -1,7 +1,7 @@
 module.exports.API = {
-    "root": "https://openapisuat.angelbroking.com",
-    "login": "http://52.66.228.239:3000/login",
-    "debug": false,
+    "root": "https://apiconnect.angelbroking.com",
+    "login": "https://smartapi.angelbroking.com/publisher-login",
+    "debug": true,
     "timeout": 7000,
 
     "user_login": "/rest/auth/angelbroking/user/v1/loginByPassword",
