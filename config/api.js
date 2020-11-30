@@ -1,7 +1,7 @@
 module.exports.API = {
     "root": "https://apiconnect.angelbroking.com",
     "login": "https://smartapi.angelbroking.com/publisher-login",
-    "debug": true,
+    "debug": false,
     "timeout": 7000,
 
     "user_login": "/rest/auth/angelbroking/user/v1/loginByPassword",
