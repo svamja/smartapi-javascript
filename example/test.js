@@ -95,16 +95,16 @@ function customSessionHook() {
 
 // ########################### Socket Sample Code Starts Here ###########################
 
-// let web_socket = new WebSocket({
-//     client_code: "CLIENT_CODE",
-//     feed_token: "FEED_TOKEN",
-//     script: "nse_cm|2885&nse_cm|1594"   //exchange|token for multi stocks use & seperator
-// });
+let web_socket = new WebSocket({
+    client_code: "CLIENT_CODE",
+    feed_token: "FEED_TOKEN",
+    script: "nse_cm|2885&nse_cm|1594"   //exchange|token for multi stocks use & seperator
+});
 
-// web_socket.connect();
-// web_socket.on('tick', receiveTick)
+web_socket.connect();
+web_socket.on('tick', receiveTick)
 
-// function receiveTick(data) {
-//     console.log("receiveTick:::::", data)
-// }
+function receiveTick(data) {
+    console.log("receiveTick:::::", data)
+}
 // ########################### Socket Sample Code Ends Here ###########################

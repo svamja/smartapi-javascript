@@ -88,6 +88,15 @@ smart_api.generateSession("CLIENT_CODE", "PASSWORD")
     .catch(ex => {
         //Log error
     })
+
+    // TO HANDLE SESSION EXPIRY, USERS CAN PROVIDE A CUSTOM FUNCTION AS PARAMETER TO setSessionExpiryHook METHOD
+    smart_api.setSessionExpiryHook(customSessionHook);
+
+    function customSessionHook() {
+        console.log("User loggedout");
+        
+        // NEW AUTHENTICATION CAN TAKE PLACE HERE
+    }
 ```
 
 ## Getting started with SmartAPI Websocket's
