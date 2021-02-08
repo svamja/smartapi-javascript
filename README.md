@@ -112,6 +112,11 @@ let web_socket = new WebSocket({
 web_socket.connect();
 web_socket.on('tick', receiveTick)
 
+// TO CLOSE THE SOCKET CONNECTION
+setTimeout(function () {
+    web_socket.close()
+}, 3000)
+
 function receiveTick(data) {
     console.log("Receive stock ticks::", data)
 }
