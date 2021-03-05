@@ -10,7 +10,7 @@ let smart_api = new SmartAPI({
 
 smart_api.generateSession("CLIENT_CODE", "PASSWORD")
     .then((data) => {
-        console.log(data)
+        console.log("SESSION DATA::", data)
         return smart_api.getProfile()
 
         // return smart_api.logout("CLIENT_CODE")
@@ -109,7 +109,7 @@ smart_api.generateSession("CLIENT_CODE", "PASSWORD")
         // })
     })
     .then((data) => {
-        console.log(data)
+        console.log("PROFILE::", data)
     })
 
 
