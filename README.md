@@ -20,10 +20,14 @@ smart_api.generateSession("CLIENT_CODE", "PASSWORD")
     .then((data) => {
         return smart_api.getProfile();
 
+        // User Methods
         // return smart_api.getProfile()
 
         // return smart_api.logout()
 
+        // return smart_api.getRMS();
+
+        // Order Methods
         // return smart_api.placeOrder({
         //     "variety": "NORMAL",
         //     "tradingsymbol": "SBIN-EQ",
@@ -60,18 +64,17 @@ smart_api.generateSession("CLIENT_CODE", "PASSWORD")
         //     "orderid": "201130000006424"
         // });
 
-        // V2 API'S
         // return smart_api.getOrderBook();
 
         // return smart_api.getTradeBook();
 
-        // return smart_api.getRMS();
-
+      
+        // Portfolio Methods
         // return smart_api.getHolding();
 
         // return smart_api.getPosition();
 
-        // return smart_api.covertPosition({
+        // return smart_api.convertPosition({
         //     "exchange": "NSE",
         //     "oldproducttype": "DELIVERY",
         //     "newproducttype": "MARGIN",
@@ -80,6 +83,51 @@ smart_api.generateSession("CLIENT_CODE", "PASSWORD")
         //     "quantity": 1,
         //     "type": "DAY"
         // });
+
+
+        // GTT Methods
+        // return smart_api.createRule({
+        //    "tradingsymbol" : "SBIN-EQ",
+        //    "symboltoken" : "3045",
+        //    "exchange" : "NSE", 
+        //    "producttype" : "MARGIN",
+        //    "transactiontype" : "BUY",
+        //    "price" : 100000,
+        //    "qty" : 10,
+        //    "disclosedqty": 10,
+        //    "triggerprice" : 200000,
+        //    "timeperiod" : 365
+        // })
+        // return smart_api.modifyRule({
+        //             "id" : 1000014,
+        //             "symboltoken" : "3045",
+        //             "exchange" : "NSE", 
+        //             "qty" : 10
+
+        // })
+        // return smart_api.cancelRule({
+        //      "id" : 1000014,
+        //      "symboltoken" : "3045",
+        //      "exchange" : "NSE"
+        // })
+        // return smart_api.ruleDetails({
+        //     "id" : 25
+        // })
+        // return smart_api.ruleList({
+        //      "status" : ["NEW","CANCELLED"],
+        //      "page" : 1,
+        //      "count" : 10 
+        // })
+
+        // Historical Methods
+        // return smart_api.getCandleData({
+        //     "exchange": "NSE",
+        //     "symboltoken": "3045",
+        //     "interval": "MINUTE",
+        //     "fromdate": "2021-02-08 09:00",
+        //     "todate": "2021-02-08 09:16"
+        // })
+
 
     })
     .then((data) => {
@@ -107,6 +155,7 @@ let web_socket = new WebSocket({
     client_code: "CLIENT_CODE",
     feed_token: "FEED_TOKEN",
     script: "nse_cm|2885&nse_cm|1594"   //exchange|token for multi stocks use & seperator
+     task: 'sfi'                        // Values can be - mw|sfi|dp
 });
 
 web_socket.connect();

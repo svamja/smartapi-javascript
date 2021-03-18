@@ -8,16 +8,18 @@ let smart_api = new SmartAPI({
 });
 
 
-smart_api.generateSession("CLIENT_CODE", "PASSWORD")
+smart_api.generateSession("D883", "abc444")
     .then((data) => {
         console.log(data)
-        return smart_api.getProfile()
+       return smart_api.getProfile()
 
-        // return smart_api.logout("CLIENT_CODE")
+         // User Methods
+        // return smart_api.logout()
 
+        // return smart_api.getRMS();
 
-        // return smart_api.placeOrder
-        //           ({
+        // Order Methods
+        // return smart_api.placeOrder({
         //     "variety": "NORMAL",
         //     "tradingsymbol": "SBIN-EQ",
         //     "symboltoken": "3045",
@@ -33,7 +35,7 @@ smart_api.generateSession("CLIENT_CODE", "PASSWORD")
         // })
 
         // return smart_api.modifyOrder({
-        //     "orderid": "210304001809139",
+        //     "orderid": "201130000006424",
         //     "variety": "NORMAL",
         //     "tradingsymbol": "SBIN-EQ",
         //     "symboltoken": "3045",
@@ -46,35 +48,35 @@ smart_api.generateSession("CLIENT_CODE", "PASSWORD")
         //     "squareoff": "0",
         //     "stoploss": "0",
         //     "quantity": "1"
-        // })
+        // });
 
         // return smart_api.cancelOrder({
         //     "variety": "NORMAL",
-        //     "orderid": "210304001809139"
-        // })
+        //     "orderid": "201130000006424"
+        // });
 
-        //         //         //         // V2 API'S
-        // return smart_api.getOrderBook()
+        // return smart_api.getOrderBook();
 
-        // return smart_api.getTradeBook()
+        // return smart_api.getTradeBook();
 
-        // return smart_api.getRMS()
+      
+        // Portfolio Methods
+        // return smart_api.getHolding();
 
-        // return smart_api.getHolding()
-
-        // return smart_api.getPosition()
+        // return smart_api.getPosition();
 
         // return smart_api.convertPosition({
-        // "exchange": "NSE",
-        // "oldproducttype": "DELIVERY",
-        // "newproducttype": "MARGIN",
-        // "tradingsymbol": "SBIN-EQ",
-        // "transactiontype": "BUY",
-        // "quantity": 1,
-        // "type": "DAY"
+        //     "exchange": "NSE",
+        //     "oldproducttype": "DELIVERY",
+        //     "newproducttype": "MARGIN",
+        //     "tradingsymbol": "SBIN-EQ",
+        //     "transactiontype": "BUY",
+        //     "quantity": 1,
+        //     "type": "DAY"
+        // });
 
 
-        // })
+        // GTT Methods
         // return smart_api.createRule({
         //    "tradingsymbol" : "SBIN-EQ",
         //    "symboltoken" : "3045",
@@ -106,6 +108,15 @@ smart_api.generateSession("CLIENT_CODE", "PASSWORD")
         //      "status" : ["NEW","CANCELLED"],
         //      "page" : 1,
         //      "count" : 10 
+        // })
+
+        // Historical Methods
+        // return smart_api.getCandleData({
+        //     "exchange": "NSE",
+        //     "symboltoken": "3045",
+        //     "interval": "MINUTE",
+        //     "fromdate": "2021-02-08 09:00",
+        //     "todate": "2021-02-08 09:16"
         // })
     })
     .then((data) => {

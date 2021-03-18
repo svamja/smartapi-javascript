@@ -1,5 +1,6 @@
 module.exports.API = {
-    "root": "https://apiconnect.angelbroking.com",
+   // "root": "https://apiconnect.angelbroking.com",
+    "root" : "https://openapisuat.angelbroking.com",
     "login": "https://smartapi.angelbroking.com/publisher-login",
     "debug": false,
     "timeout": 7000,
@@ -26,6 +27,8 @@ module.exports.API = {
     "cancel_rule": "/rest/secure/angelbroking/gtt/v1/cancelRule",
     "rule_details": "/rest/secure/angelbroking/gtt/v1/ruleDetails",
     "rule_list": "/rest/secure/angelbroking/gtt/v1/ruleList",
+
+    "candle_data" : "/rest/secure/angelbroking/historical/v1/getCandleData",
     // "api.token": "/session/token",
     // "api.token.invalidate": "/session/token",
     // "api.token.renew": "/session/refresh_token",
