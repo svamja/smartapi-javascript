@@ -8,7 +8,7 @@ let smart_api = new SmartAPI({
 });
 
 
-smart_api.generateSession("D883", "abc444")
+smart_api.generateSession("CLIENT_CODE", "PASSWORD")
     .then((data) => {
         console.log(data)
        return smart_api.getProfile()
@@ -120,7 +120,7 @@ smart_api.generateSession("D883", "abc444")
         // })
     })
     .then((data) => {
-        console.log(data)
+        console.log("PROFILE::", data)
     })
 
 

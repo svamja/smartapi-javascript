@@ -1,6 +1,10 @@
 {
   "name": "smartapi-javascript",
+<<<<<<< HEAD
   "version": "1.0.8",
+=======
+  "version": "1.0.9",
+>>>>>>> 38c1c3f9956b39c003b29ff3fa4c1a0c0c328129
   "description": "",
   "main": "./lib/",
   "scripts": {

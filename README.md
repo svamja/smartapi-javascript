@@ -10,7 +10,7 @@ npm i smartapi-javascript
 let { SmartAPI, WebSocket } = require("smartapi-javascript");
 
 let smart_api = new SmartAPI({
-    api_key: "YOUR_API_KEY",    // PROVIDE YOUR API KEY HERE
+    api_key: "smartapi_key",    // PROVIDE YOUR API KEY HERE
     // OPTIONAL
     // access_token: "YOUR_ACCESS_TOKEN",
     // refresh_token: "YOUR_REFRESH_TOKEN"
