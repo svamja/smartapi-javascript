@@ -10,14 +10,16 @@ let smart_api = new SmartAPI({
 
 // smart_api.generateSession("CLIENT_CODE", "PASSWORD")
 //     .then((data) => {
-//         console.log("SESSION DATA::", data)
-//         return smart_api.getProfile()
+//         console.log(data)
+//        return smart_api.getProfile()
 
-// return smart_api.logout("CLIENT_CODE")
+// User Methods
+// return smart_api.logout()
 
+// return smart_api.getRMS();
 
-// return smart_api.placeOrder
-//           ({
+// Order Methods
+// return smart_api.placeOrder({
 //     "variety": "NORMAL",
 //     "tradingsymbol": "SBIN-EQ",
 //     "symboltoken": "3045",
@@ -33,7 +35,7 @@ let smart_api = new SmartAPI({
 // })
 
 // return smart_api.modifyOrder({
-//     "orderid": "210304001809139",
+//     "orderid": "201130000006424",
 //     "variety": "NORMAL",
 //     "tradingsymbol": "SBIN-EQ",
 //     "symboltoken": "3045",
@@ -46,35 +48,35 @@ let smart_api = new SmartAPI({
 //     "squareoff": "0",
 //     "stoploss": "0",
 //     "quantity": "1"
-// })
+// });
 
 // return smart_api.cancelOrder({
 //     "variety": "NORMAL",
-//     "orderid": "210304001809139"
-// })
+//     "orderid": "201130000006424"
+// });
 
-//         //         //         // V2 API'S
-// return smart_api.getOrderBook()
+// return smart_api.getOrderBook();
 
-// return smart_api.getTradeBook()
+// return smart_api.getTradeBook();
 
-// return smart_api.getRMS()
 
-// return smart_api.getHolding()
+// Portfolio Methods
+// return smart_api.getHolding();
 
-// return smart_api.getPosition()
+// return smart_api.getPosition();
 
 // return smart_api.convertPosition({
-// "exchange": "NSE",
-// "oldproducttype": "DELIVERY",
-// "newproducttype": "MARGIN",
-// "tradingsymbol": "SBIN-EQ",
-// "transactiontype": "BUY",
-// "quantity": 1,
-// "type": "DAY"
+//     "exchange": "NSE",
+//     "oldproducttype": "DELIVERY",
+//     "newproducttype": "MARGIN",
+//     "tradingsymbol": "SBIN-EQ",
+//     "transactiontype": "BUY",
+//     "quantity": 1,
+//     "type": "DAY"
+// });
 
 
-// })
+// GTT Methods
 // return smart_api.createRule({
 //    "tradingsymbol" : "SBIN-EQ",
 //    "symboltoken" : "3045",
@@ -107,12 +109,19 @@ let smart_api = new SmartAPI({
 //      "page" : 1,
 //      "count" : 10 
 // })
+
+// Historical Methods
+// return smart_api.getCandleData({
+//     "exchange": "NSE",
+//     "symboltoken": "3045",
+//     "interval": "MINUTE",
+//     "fromdate": "2021-02-08 09:00",
+//     "todate": "2021-02-08 09:16"
+// })
 // })
 // .then((data) => {
 //     console.log("PROFILE::", data)
 // })
-
-
 // .catch(ex => {
 //     console.log("EX::", ex)
 // })
@@ -134,18 +143,20 @@ let smart_api = new SmartAPI({
 // ########################### Socket Sample Code Starts Here ###########################
 
 let web_socket = new WebSocket({
-    client_code: "S212741",//"CLIENT_CODE",
-    feed_token: "0925390006",
-    script: "nse_cm|2885&nse_cm|1594",      //mcx_fo|227125  // " "nse_cm|2885&nse_cm|1594" ,         //  //exchange|token for multi stocks use & seperator
-    task: 'mw'      // mw|sfi|dp
+    client_code: "CLIENT_CODE",//"",
+    feed_token: "FEED_TOKEN"
 });
 
-web_socket.connect();
-web_socket.on('tick', receiveTick)
+web_socket.connect()
+    .then(() => {
+        web_socket.runScript("SCRIPT", "TASK") // SCRIPT: nse_cm|2885, mcx_fo|222900  TASK: mw|sfi|dp
 
-setTimeout(function () {
-    web_socket.close()
-}, 3000)
+        setTimeout(function () {
+            web_socket.close()
+        }, 3000)
+    })
+
+web_socket.on('tick', receiveTick)
 
 function receiveTick(data) {
     console.log("receiveTick:::::", data)
