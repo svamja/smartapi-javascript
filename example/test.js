@@ -8,10 +8,10 @@ let smart_api = new SmartAPI({
 });
 
 
-// smart_api.generateSession("S212741", "pass@456")
+// smart_api.generateSession("CLIENT_CODE", "PASSWORD")
 //     .then((data) => {
 //         console.log(data)
-//  return smart_api.getProfile()
+//        return smart_api.getProfile()
 
 // User Methods
 // return smart_api.logout()
@@ -122,8 +122,6 @@ let smart_api = new SmartAPI({
 // .then((data) => {
 //     console.log("PROFILE::", data)
 // })
-
-
 // .catch(ex => {
 //     console.log("EX::", ex)
 // })
@@ -145,30 +143,21 @@ let smart_api = new SmartAPI({
 // ########################### Socket Sample Code Starts Here ###########################
 
 let web_socket = new WebSocket({
-    client_code: "S212741",
-    feed_token: "093363928",
-    // script: "mcx_fo|226196",       //  "mcx_fo|227125" ,        // " "nse_cm|2885&nse_cm|1594" ,         //  //exchange|token for multi stocks use & seperator
-    // task: "mw"     // mw|sfi|dp
+    client_code: "CLIENT_CODE",    //"",
+    feed_token: "FEED_TOKEN"
 });
 
-let currentStatus = web_socket.connect();
-console.log("=======Current status===========",currentStatus);
+web_socket.connect()
+    .then(() => {
+        web_socket.runScript("SCRIPT", "TASK") // SCRIPT: nse_cm|2885, mcx_fo|222900  TASK: mw|sfi|dp
 
-if (currentStatus === false) {
-    web_socket.taskCall("mcx_fo|226196", "mw");
-}
+        setTimeout(function () {
+            web_socket.close()
+        }, 3000)
+    })
 
-// function callBack() {
-//     console.log("===========CallBack function======");
-//     web_socket.taskCall("mcx_fo|226196", "mw");
-// }
 web_socket.on('tick', receiveTick)
 
-
-
-// setTimeout(function () {
-//     web_socket.close()
-// }, 3000)
 
 function receiveTick(data) {
     console.log("receiveTick:::::", data)

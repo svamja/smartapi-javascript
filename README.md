@@ -158,7 +158,15 @@ let web_socket = new WebSocket({
      task: 'sfi'                        // Values can be - mw|sfi|dp
 });
 
-web_socket.connect();
+web_socket.connect()
+    .then(() => {
+        web_socket.runScript("SCRIPT", "TASK") // SCRIPT: exchange|token for multi stocks use & seperator, mcx_fo|222900  ### TASK: mw|sfi|dp
+
+        setTimeout(function () {
+            web_socket.close()
+        }, 3000)
+    })
+    
 web_socket.on('tick', receiveTick)
 
 // TO CLOSE THE SOCKET CONNECTION
