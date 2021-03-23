@@ -154,7 +154,7 @@ smart_api.generateSession("CLIENT_CODE", "PASSWORD")
 let web_socket = new WebSocket({
     client_code: "CLIENT_CODE",
     feed_token: "FEED_TOKEN",
-    script: "nse_cm|2885&nse_cm|1594"   //exchange|token for multi stocks use & seperator
+    script: "nse_cm|2885&nse_cm|1594" ,   //exchange|token for multi stocks use & seperator
      task: 'sfi'                        // Values can be - mw|sfi|dp
 });
 
