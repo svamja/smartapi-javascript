@@ -143,7 +143,7 @@ let smart_api = new SmartAPI({
 // ########################### Socket Sample Code Starts Here ###########################
 
 let web_socket = new WebSocket({
-    client_code: "CLIENT_CODE",    //"",
+    client_code: "CLIENT_CODE",   
     feed_token: "FEED_TOKEN"
 });
 
