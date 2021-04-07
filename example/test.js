@@ -8,7 +8,7 @@ let smart_api = new SmartAPI({
 });
 
 
-smart_api.generateSession("URVI88", "abc111")
+smart_api.generateSession("URVI88", "abc999")
     .then((data) => {
         console.log(data)
         //        return smart_api.getProfile()
@@ -116,8 +116,8 @@ smart_api.generateSession("URVI88", "abc111")
         //     "exchange": "NSE",
         //     "symboltoken": "3045",
         //     "interval": "ONE_MINUTE",
-        //     "fromdate": "2021-02-08 09:00",
-        //     "todate": "2021-02-08 09:16"
+        //     "fromdate": "2021-02-10 09:00",
+        //     "todate": "2021-02-10 09:20"
         // })
     }).then((data) => {
         console.log("PROFILE::", data)
@@ -144,7 +144,7 @@ smart_api.generateSession("URVI88", "abc111")
 
 let web_socket = new WebSocketClient({
     clientcode: "URVI88",    
-    jwttoken: "eyJhbGciOiJIUzUxMiJ9.eyJ1c2VybmFtZSI6IlVSVkk4OCIsInJvbGVzIjowLCJ1c2VydHlwZSI6IlVTRVIiLCJpYXQiOjE2MTcxNzQ0MTAsImV4cCI6MTcwMzU3NDQxMH0.TvcwWBiFlhFMqyqDOnfcU2ibXNyuBhdNENWOkabddpyV4P541Rw-CU1QJhLZFbailBiGdbt-YbUQfomtIxlhGA",
+    jwttoken: "eyJhbGciOiJIUzUxMiJ9.eyJ1c2VybmFtZSI6IlVSVkk4OCIsInJvbGVzIjowLCJ1c2VydHlwZSI6IlVTRVIiLCJpYXQiOjE2MTc3OTgyNTEsImV4cCI6MTcwNDE5ODI1MX0.K1cFhCjVyopAns3uqGnpc6eJWWeigxok8jNVs2cLyK7obqq20FX9ojc7kPNfGlgs4sdQADsrrAdxxx0JLr_Gqg",
     apikey: "smartapi_key",
     feedtype: "order_feed",
 });
