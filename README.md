@@ -11,11 +11,12 @@ let { SmartAPI, WebSocket } = require("smartapi-javascript");
 
 let smart_api = new SmartAPI({
     api_key: "smartapi_key",    // PROVIDE YOUR API KEY HERE
-    // OPTIONAL
+     // OPTIONAL : If user has valid access token and refresh token then it can be directly passed to the constructor 
     // access_token: "YOUR_ACCESS_TOKEN",
     // refresh_token: "YOUR_REFRESH_TOKEN"
 });
 
+// If user does not have valid access token and refresh token then use generateSession method 
 smart_api.generateSession("CLIENT_CODE", "PASSWORD")
     .then((data) => {
         return smart_api.getProfile();
@@ -119,16 +120,14 @@ smart_api.generateSession("CLIENT_CODE", "PASSWORD")
         //      "count" : 10 
         // })
 
-        // Historical Methods
+      // Historical Methods
         // return smart_api.getCandleData({
         //     "exchange": "NSE",
         //     "symboltoken": "3045",
-        //     "interval": "MINUTE",
-        //     "fromdate": "2021-02-08 09:00",
-        //     "todate": "2021-02-08 09:16"
+        //     "interval": "ONE_MINUTE",
+        //     "fromdate": "2021-02-10 09:00",
+        //     "todate": "2021-02-10 09:20"
         // })
-
-
     })
     .then((data) => {
         // Profile details
@@ -150,32 +149,56 @@ smart_api.generateSession("CLIENT_CODE", "PASSWORD")
 ## Getting started with SmartAPI Websocket's
 ```javascript
 ########################### Socket Sample Code Starts Here ###########################
+// Old websocket
 
 let web_socket = new WebSocket({
-    client_code: "CLIENT_CODE",
-    feed_token: "FEED_TOKEN",
-    script: "nse_cm|2885&nse_cm|1594" ,   //exchange|token for multi stocks use & seperator
-     task: 'sfi'                        // Values can be - mw|sfi|dp
+    client_code: "CLIENT_CODE",   
+    feed_token: "FEED_TOKEN"
 });
 
 web_socket.connect()
     .then(() => {
-        web_socket.runScript("SCRIPT", "TASK") // SCRIPT: exchange|token for multi stocks use & seperator, mcx_fo|222900  ### TASK: mw|sfi|dp
+        web_socket.runScript("SCRIPT", "TASK") // SCRIPT: nse_cm|2885, mcx_fo|222900  TASK: mw|sfi|dp
 
         setTimeout(function () {
             web_socket.close()
         }, 3000)
     })
-    
+
 web_socket.on('tick', receiveTick)
 
-// TO CLOSE THE SOCKET CONNECTION
-setTimeout(function () {
-    web_socket.close()
-}, 3000)
 
 function receiveTick(data) {
-    console.log("Receive stock ticks::", data)
+    console.log("receiveTick:::::", data)
 }
-########################### Socket Sample Code Ends Here ###########################
+
+ ########################### Socket Sample Code Ends Here ###########################
+
+ ########################### Socket Sample Code Starts Here ###########################
+// New websocket
+
+let web_socket = new WebSocketClient({
+    clientcode: "CLIENT_CODE",    
+    jwttoken: "jwt_token",
+    apikey: "smartapi_key",
+    feedtype: "order_feed",
+});
+
+web_socket.connect()
+    .then(() => {
+        web_socket.fetchData("subscribe", "order_feed");  // ACTION_TYPE: subscribe | unsubscribe FEED_TYPE: order_feed
+
+        setTimeout(function () {
+            web_socket.close()
+        }, 60000)
+    });
+
+web_socket.on('tick', receiveTick);
+
+
+function receiveTick(data) {
+    console.log("receiveTick:::::", data);
+}
+
+ ########################### Socket Sample Code Ends Here ###########################
 ```

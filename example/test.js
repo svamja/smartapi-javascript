@@ -2,13 +2,13 @@ let { SmartAPI, WebSocketClient } = require("smartapi-javascript");
 
 let smart_api = new SmartAPI({
     api_key: "smartapi_key",    // PROVIDE YOUR API KEY HERE
-    // OPTIONAL
+    // OPTIONAL : If user has valid access token and refresh token then it can be directly passed to the constructor 
     // access_token: "YOUR_ACCESS_TOKEN",
     // refresh_token: "YOUR_REFRESH_TOKEN"
 });
 
-
-smart_api.generateSession("URVI88", "abc999")
+// If user does not have valid access token and refresh token then use generateSession method 
+smart_api.generateSession("CLIENT_CODE", "PASSWORD") 
     .then((data) => {
         console.log(data)
         //        return smart_api.getProfile()
@@ -19,20 +19,20 @@ smart_api.generateSession("URVI88", "abc999")
         // return smart_api.getRMS();
 
         // Order Methods
-        return smart_api.placeOrder({
-            "variety": "NORMAL",
-            "tradingsymbol": "SBIN-EQ",
-            "symboltoken": "3045",
-            "transactiontype": "BUY",
-            "exchange": "NSE",
-            "ordertype": "LIMIT",
-            "producttype": "INTRADAY",
-            "duration": "DAY",
-            "price": "19500",
-            "squareoff": "0",
-            "stoploss": "0",
-            "quantity": "1"
-        })
+        // return smart_api.placeOrder({
+        //     "variety": "NORMAL",
+        //     "tradingsymbol": "SBIN-EQ",
+        //     "symboltoken": "3045",
+        //     "transactiontype": "BUY",
+        //     "exchange": "NSE",
+        //     "ordertype": "LIMIT",
+        //     "producttype": "INTRADAY",
+        //     "duration": "DAY",
+        //     "price": "19500",
+        //     "squareoff": "0",
+        //     "stoploss": "0",
+        //     "quantity": "1"
+        // })
 
 
         // return smart_api.modifyOrder({
@@ -141,28 +141,56 @@ smart_api.generateSession("URVI88", "abc999")
 
 
 // ########################### Socket Sample Code Starts Here ###########################
+// Old Websocket
 
-let web_socket = new WebSocketClient({
-    clientcode: "URVI88",    
-    jwttoken: "eyJhbGciOiJIUzUxMiJ9.eyJ1c2VybmFtZSI6IlVSVkk4OCIsInJvbGVzIjowLCJ1c2VydHlwZSI6IlVTRVIiLCJpYXQiOjE2MTc3OTgyNTEsImV4cCI6MTcwNDE5ODI1MX0.K1cFhCjVyopAns3uqGnpc6eJWWeigxok8jNVs2cLyK7obqq20FX9ojc7kPNfGlgs4sdQADsrrAdxxx0JLr_Gqg",
-    apikey: "smartapi_key",
-    feedtype: "order_feed",
-});
+// let web_socket = new WebSocket({
+//     client_code: "CLIENT_CODE",   
+//     feed_token: "FEED_TOKEN"
+// });
 
-web_socket.connect()
-    .then(() => {
-        web_socket.fetchData("subscribe", "order_feed")  // ACTION_TYPE: subscribe | unsubscribe FEED_TYPE: order_feed
+// web_socket.connect()
+//     .then(() => {
+//         web_socket.runScript("SCRIPT", "TASK") // SCRIPT: nse_cm|2885, mcx_fo|222900  TASK: mw|sfi|dp
 
-        setTimeout(function () {
-            web_socket.close()
-        }, 60000)
-    })
+//         setTimeout(function () {
+//             web_socket.close()
+//         }, 3000)
+//     })
 
-web_socket.on('tick', receiveTick)
+// web_socket.on('tick', receiveTick)
 
 
-function receiveTick(data) {
-    console.log("receiveTick:::::", data)
-}
+// function receiveTick(data) {
+//     console.log("receiveTick:::::", data)
+// }
+
+// ########################### Socket Sample Code Ends Here ###########################
+
+// ########################### Socket Sample Code Starts Here ###########################
+// New websocket
+
+
+// let web_socket = new WebSocketClient({
+//     clientcode: "CLIENT_CODE",    
+//     jwttoken: "jwt_token",
+//     apikey: "smartapi_key",
+//     feedtype: "order_feed",
+// });
+
+// web_socket.connect()
+//     .then(() => {
+//         web_socket.fetchData("subscribe", "order_feed");  // ACTION_TYPE: subscribe | unsubscribe FEED_TYPE: order_feed
+
+//         setTimeout(function () {
+//             web_socket.close()
+//         }, 60000)
+//     });
+
+// web_socket.on('tick', receiveTick);
+
+
+// function receiveTick(data) {
+//     console.log("receiveTick:::::", data);
+// }
 
 // ########################### Socket Sample Code Ends Here ###########################
